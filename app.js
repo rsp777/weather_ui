@@ -22,8 +22,8 @@ console.log('Inside fetchweather : '+city);
 const url = 'https://192.168.1.7:8090/weather/'+city;
 console.log(url);
 // console(xhr.getResponseHeader());
-  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
 xhr.open('GET',url,true);
+ xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); xhr.setRequestHeader('Access-Control-Allow-Origin', '*');  
 xhr.send();
 
 xhr.onload = () =>{
