@@ -19,7 +19,7 @@ function fetchWeather(city){
 console.log('Inside fetchweather : '+city);
   // Make an API call to retrieve weather data for the city
   // Replace the URL with your actual API endpoint
-const url = 'https://192.168.1.8:8090/weather/'+city;
+const url = 'https://192.168.1.7:8090/weather/'+city;
 console.log(url);
 // console(xhr.getResponseHeader());
 xhr.open('GET',url,true);
@@ -100,7 +100,7 @@ function fetchForecast(city){
   const xhr = new XMLHttpRequest();
 
   console.log(city);
-  const url = 'https://192.168.1.8:8083/forecast/'+city;
+  const url = 'https://192.168.1.7:8083/forecast/'+city;
 
   console.log(url);
   xhr.open('GET',url,true);
