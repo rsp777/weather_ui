@@ -10,17 +10,23 @@ function search(event) {
 function getWeather() {
   const cityInput = document.getElementById("city-input");
   city = cityInput.value;
-  console.log('City ; '+city);
-  fetchWeather(city);
+  // console.log('City ; '+city);
+  fetchWeather(city)
+  //console.log('fetchWeather : '+fetchWeather(city));
 }
-
+const xhr = new XMLHttpRequest();
 function fetchWeather(city){
-  const xhr = new XMLHttpRequest();
-console.log('Inside fetchweather : '+city);
+// console.log('Inside fetchweather : '+city);
   // Make an API call to retrieve weather data for the city
   // Replace the URL with your actual API endpoint
-const url = 'https://192.168.1.7:8090/weather/'+city;
-console.log(url);
+
+//const url = 'https://192.168.1.7:8090/weather/'+city;
+const url = 'http://'+location.hostname+':8090/weather/'+city;
+// console.log(url);
+=======
+//const url = 'https://192.168.1.7:8090/weather/'+city;
+//console.log(url);
+
 // console(xhr.getResponseHeader());
 xhr.open('GET',url,true);
  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); xhr.setRequestHeader('Access-Control-Allow-Origin', '*');  
@@ -29,19 +35,19 @@ xhr.send();
 xhr.onload = () =>{
   
   // we can change the data type to json also by
-  console.log(xhr.status);
+  //  console.log(xhr.status);
  if(xhr.status == 200){
 
   const data = JSON.parse(xhr.response);
-  console.log(data);
+  // console.log(data);
   const weatherInfo = document.getElementById("weather-info");
-  console.log(weatherInfo);
+  // console.log(weatherInfo);
   // console.log("Rain : "+Object.keys(data.rain)[0].value);
   // console.log("Rain : "+data.rain["1h"]);
-  console.log("Speed : "+data.wind["speed"]);
-  console.log("Wind Direction : "+data.wind["deg"]);
-  console.log("Current Date : "+getCurrentDate(data.dt));
-  console.log("Current Day : "+getWeekDay(date.dt));
+  // console.log("Speed : "+data.wind["speed"]);
+  // console.log("Wind Direction : "+data.wind["deg"]);
+  // console.log("Current Date : "+getCurrentDate(data.dt));
+  // console.log("Current Day : "+getWeekDay(date.dt));
 
 
   // console.log("Dateeeee : "+timeConverter(data.dt));
@@ -91,8 +97,9 @@ xhr.onload = () =>{
 function getForecast(){
   const cityInput = document.getElementById("city-input");
   const city = cityInput.value;
-  console.log('City ; '+city);
+  // console.log('City ; '+city);
   fetchForecast(city);
+ // console.log('fetchForecast : '+fetchForecast(city).xhr.status());
 }
 
 function fetchForecast(city){
@@ -100,16 +107,23 @@ function fetchForecast(city){
   // container.innerHTML = "h";
   const xhr = new XMLHttpRequest();
 
-  console.log(city);
-  const url = 'https://192.168.1.7:8083/forecast/'+city;
 
-  console.log(url);
+  // console.log(city);
+  //const url = 'https://192.168.1.7:8083/forecast/'+city;
+const url = 'http://'+location.hostname+':8083/forecast/'+city;
+  // console.log(url);
+
+  console.log(city);
+//  const url = 'https://192.168.1.7:8083/forecast/'+city;
+
+//  console.log(url);
+
   xhr.open('GET',url,true);
   xhr.send();
 
   xhr.onload = () => {
 
-    console.log('Status : '+xhr.status);
+    // console.log('Status : '+xhr.status);
 
     if(xhr.status == 200){
       var data = JSON.parse(xhr.response);
@@ -131,7 +145,7 @@ data.list.forEach((element) =>  {
 }
 
     else if (xhr.status == 404 || city.length == 0  ){
-      console.log(xhr.status)
+      // console.log(xhr.status)
       alert("Incorrect City "+xhr.status.toString());
       alert("Please enter correct City");
       window.location.reload();
@@ -205,14 +219,14 @@ function getCityByLatLong(){
         const lng = position.coords.longitude;
   
         // Do something with the location data, e.g. display on a map
-        console.log(`Latitude: ${lat}, longitude: ${lng}`);
+        // console.log(`Latitude: ${lat}, longitude: ${lng}`);
         const apiUrl = 'https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lng+'&format=json';
-        console.log('API URL : '+apiUrl);
+        // console.log('API URL : '+apiUrl);
       axios.get(apiUrl)
         .then(response => {
           const data = response.data;
           const city  = data.address["city"];
-          console.log('Location: ' + city);
+          // console.log('Location: ' + city);
           fetchWeather(city);
           fetchForecast(city);
         })
@@ -230,7 +244,7 @@ function getCityByLatLong(){
   } else {
     // Geolocation is not supported by the browser
     console.error("Geolocation is not supported by this browser.");
-    return alert('Please turn on the location'+getLatLong());
+    return alert('Please turn on the location'+getCityByLatLong());
   }
 }
 
@@ -239,37 +253,37 @@ function getCityByLatLong(){
 function getWeekDay(dt){
   var date = new Date(dt * 1000);
   var day_from_date = date.getDay();
-  console.log('Dayyy : '+day_from_date);
+  // console.log('Dayyy : '+day_from_date);
     if(day_from_date == 0){
-      console.log('day_from_date is : '+day_from_date);
+      // console.log('day_from_date is : '+day_from_date);
        return 'Sunday';
     }
     else if(day_from_date == 1){
-      console.log('day_from_date is : '+day_from_date);
+      // console.log('day_from_date is : '+day_from_date);
       return 'Monday';
     }
     else if(day_from_date == 2){
-      console.log('day_from_date is : '+day_from_date);
+      // console.log('day_from_date is : '+day_from_date);
       return 'Tuesday';
     }
     else if(day_from_date == 3){
-      console.log('day_from_date is : '+day_from_date);
+      // console.log('day_from_date is : '+day_from_date);
       return 'Wednesday';
     }
     else if(day_from_date == 4){
-      console.log('day_from_date is : '+day_from_date);
+      // console.log('day_from_date is : '+day_from_date);
       return 'Thursday';
     }
     else if(day_from_date == 5){
-      console.log('day_from_date is : '+day_from_date);
+      // console.log('day_from_date is : '+day_from_date);
       return 'Friday';
     }
     else if(day_from_date == 6){
-      console.log('day_from_date is : '+day_from_date);
+      // console.log('day_from_date is : '+day_from_date);
       return 'Saturday';
     }
     else{
-      console.log('day_from_date is : '+day_from_date);
+      // console.log('day_from_date is : '+day_from_date);
         return 'Invalid Day';
     }
 }
@@ -292,7 +306,17 @@ function getCurrentDate(dt) {
       const istOffset = 5.5 * 60 * 60; // IST offset in seconds
       const istTimestamp = timestamp + istOffset; // Add IST offset
       const istDate = new Date(istTimestamp * 1000); // Convert back to JavaScript Date object
-      console.log('Tarik : '+istDate.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
-      return istDate.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }); 
+      // console.log('Tarik : '+istDate.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+      const options = {
+        timeZone: "Asia/Kolkata",
+        hour12: true,
+        hour: "numeric",
+        minute: "numeric",
+      };
+      return  `${istDate.toLocaleString('default', { day: 'numeric' })} 
+               ${istDate.toLocaleString('default', { month: 'long' })} \n
+               ${istDate.toLocaleString('default', { year: 'numeric' })} \n
+               ${istDate.toLocaleString("en-US", options)}`;      
+              
     }
 
