@@ -21,7 +21,7 @@ function fetchWeather(city){
   // Replace the URL with your actual API endpoint
 
 //const url = 'https://192.168.1.7:8090/weather/'+city;
-const url = 'http://'+location.hostname+':8090/weather/'+city;
+const url = 'https://'+location.hostname+':8090/weather/'+city;
 // console.log(url);
 //const url = 'https://192.168.1.7:8090/weather/'+city;
 //console.log(url);
@@ -109,7 +109,7 @@ function fetchForecast(city){
 
   // console.log(city);
   //const url = 'https://192.168.1.7:8083/forecast/'+city;
-const url = 'http://'+location.hostname+':8083/forecast/'+city;
+const url = 'https://'+location.hostname+':8083/forecast/'+city;
   // console.log(url);
 
   console.log(city);
