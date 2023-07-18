@@ -23,7 +23,6 @@ function fetchWeather(city){
 //const url = 'https://192.168.1.7:8090/weather/'+city;
 const url = 'http://'+location.hostname+':8090/weather/'+city;
 // console.log(url);
-=======
 //const url = 'https://192.168.1.7:8090/weather/'+city;
 //console.log(url);
 
