@@ -16,8 +16,11 @@ function getWeatherAndForecast() {
 const xhr = new XMLHttpRequest();
 
 function fetchWeather(city){
+
 const url = 'https://'+location.hostname+':8090/weather/'+city;
+
 xhr.open('GET',url,true);
+ xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); xhr.setRequestHeader('Access-Control-Allow-Origin', '*');  
 xhr.send();
 
 xhr.onload = () =>{
