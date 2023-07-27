@@ -1,11 +1,22 @@
-window.onload = () => {
-  getCityByLatLong();
-};
+// window.onload = () => {
+//   getCityByLatLong();
+// };
+getCityByLatLong();
+// const iframe = document.getElementById('weatherMapFrame');
+
+// // Replace the placeholders with the actual lat and lon values
+// const lat = 12.9762;
+// const lon = 77.6033;
+// const url = `https://openweathermap.org/weathermap?basemap=map&cities=true&layer=radar&lat=${lat}&lon=${lon}`;
+
+// // Set the iframe source with the updated URL
+// iframe.src = url;
 function search(event) {
   if(event.keyCode == 13) {
     getWeatherAndForecast();
   }
 }
+
 function getWeatherAndForecast() {
   const cityInput = document.getElementById("city-input");
   city = cityInput.value;
@@ -13,10 +24,11 @@ function getWeatherAndForecast() {
   fetchForecast(city);
 }
 
-const xhr = new XMLHttpRequest();
+
 
 function fetchWeather(city){
-const url = 'https://'+location.hostname+':8090/weather/'+city;
+const url = 'http://'+location.hostname+':8090/weather/'+city;
+const xhr = new XMLHttpRequest();
 xhr.open('GET',url,true);
 xhr.send();
 
@@ -27,8 +39,16 @@ xhr.onload = () =>{
  if(xhr.status == 200){
 
   const data = JSON.parse(xhr.response);
+  var dataCoordss = [data.coord.lat,data.coord.lon];
  
-  const weatherInfo = document.getElementById("weather-info");
+  const lat = data.coord.lat;
+  const lon = data.coord.lon;
+  localStorage.setItem('lat', lat);
+  localStorage.setItem('lon', lon);
+  // window.location.href = 'news.html';
+
+
+
   document.getElementById("day").innerHTML  = getWeekDay(data.dt);
     document.getElementById("date").innerHTML = getCurrentDate(data.dt);
     document.getElementById("city").innerHTML = data.name;
@@ -59,7 +79,7 @@ xhr.onload = () =>{
 
 function fetchForecast(city){
 const xhr = new XMLHttpRequest();
-const url = 'https://'+location.hostname+':8083/forecast/'+city;
+const url = 'http://'+location.hostname+':8083/forecast/'+city;
 
   xhr.open('GET',url,true);
   xhr.send();
@@ -232,3 +252,4 @@ function getCurrentDate(dt) {
               
     }
 
+  
