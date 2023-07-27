@@ -31,8 +31,10 @@
 		}
 	});
 
+
 	$(window).load(function(){
 
 	});
+
 
 })(jQuery, document, window);

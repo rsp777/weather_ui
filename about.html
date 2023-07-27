@@ -20,7 +20,7 @@
 		<![endif]-->
 
 	</head>
-
+	
 
 	<body>
 		
@@ -33,17 +33,17 @@
 							<h1 class="site-title">Weather</h1>
 							<small class="site-description"></small>
 						</div>
-					</a>
+									</a>
 
 					<!-- Default snippet for navigation -->
 					<div class="main-navigation">
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item current-menu-item"><a href="weather.html">Home</a></li>
-							<!--<li class="menu-item"><a href="news.html">News</a></li>
-							<li class="menu-item"><a href="live-cameras.html">Live cameras</a></li>
+							<li class="menu-item"><a href="weather.html">Home</a></li>
+							 <li class="menu-item"><a href="weathermaps.html">Weather Maps</a></li>
+							<!--<li class="menu-item"><a href="live-cameras.html">Live cameras</a></li>
 							<li class="menu-item"><a href="photos.html">Photos</a></li>-->
-							<li class="menu-item"><a href="about.html">About</a></li> 
+							<li class="menu-item current-menu-item"><a href="about.html">About</a></li> 
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->
 
@@ -64,7 +64,7 @@
 					<div class="container">
 						<!-- <div class="col-md-5">
 							<div class="contact-details">
-								<div class="map" data-latitude="-6.897789" data-longitude="107.621735"></div>
+								
 								<div class="contact-info">
 									<address>
 										<img src="images/icon-marker.png" alt="">
@@ -87,7 +87,8 @@
 								<li>With location being entered the application is giving the current weather data and 5 days/3 hours forecast data from openweather API.</li>
 								<br>
 								<li>The current location is being fetched by the browser as Latitude and Longitude. The Latitude and Longitude is given to <b>https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lng+'&format=json</b> API to convert it into known city/location.</li>
-								
+								<br>
+								<li>The Weather Maps feature is an iframe of openweather maps embed in this weather application.</li>
 							
 							</p>
 							<!-- <form action="#" class="contact-form">
@@ -113,7 +114,7 @@
 
 			<footer class="site-footer">
 				<div class="container">
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-md-8">
 							<form action="#" class="subscribe-form">
 								<input type="text" placeholder="Enter your email to subscribe...">
@@ -128,9 +129,9 @@
 								<a href="#"><i class="fa fa-pinterest"></i></a>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
-					<p class="colophon">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+					<p class="colophon">Copyright 2023 Springboot WeatherApp using OpenWeather API running on Azure Cloud. Designed by Themezy. All rights reserved</p>
 				</div>
 			</footer> <!-- .site-footer -->
 		</div>

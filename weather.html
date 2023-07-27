@@ -16,10 +16,10 @@
 		<!-- <a href="https://www.flaticon.com/free-icons/weather" title="weather icons">Weather icons created by iconixar - Flaticon</a> -->
 		<link rel="icon" type="image/x-icon" href="images/logo.png">
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-		<!--[if lt IE 9]>
+		<!--[if lt IE 9]><![endif]-->
 		<script src="js/ie-support/html5.js"></script>
 		<script src="js/ie-support/respond.js"></script>
-		<![endif]-->
+		
 	</head>
 	<body>
 		
@@ -39,8 +39,8 @@
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item current-menu-item"><a href="weather.html">Home</a></li>
-							<!--<li class="menu-item"><a href="news.html">News</a></li>
-							<li class="menu-item"><a href="live-cameras.html">Live cameras</a></li>
+							<li class="menu-item"><a href="weathermaps.html">Weather Maps</a></li>
+							<!--<li class="menu-item"><a href="live-cameras.html">Live cameras</a></li>
 							<li class="menu-item"><a href="photos.html">Photos</a></li>-->
 							<li class="menu-item"><a href="about.html">About</a></li> 
 						</ul> <!-- .menu -->
@@ -51,7 +51,9 @@
 
 			<div class="hero" data-bg-image="images/banner.png">
 				<div class="container">
-					<form onclick="getWeatherAndForecast()" class="find-location">
+
+					<form action="javascript:getWeatherAndForecast()"  class="find-location">
+
 						<input id = "city-input" type="text" placeholder="Find your location...">
 						<input type="submit" value="Find">
 					</form> 
@@ -271,7 +273,7 @@
 
 			<footer class="site-footer">
 				<div class="container">
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-md-8">
 							<form action="#" class="subscribe-form">
 								<input type="text" placeholder="Enter your email to subscribe...">
@@ -286,9 +288,9 @@
 								<a href="#"><i class="fa fa-pinterest"></i></a>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
-					<p class="colophon">Copyright 2023 Springboot WeatherApp using OpenWeather API running in Docker. Designed by Themezy. All rights reserved</p>
+					<p class="colophon">Copyright 2023 Springboot WeatherApp using OpenWeather API running on Azure Cloud. Designed by Themezy. All rights reserved</p>
 				</div>
 			</footer> <!-- .site-footer -->
 		</div>
