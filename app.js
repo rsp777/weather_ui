@@ -1,7 +1,7 @@
-// window.onload = () => {
-//   getCityByLatLong();
-// };
-getCityByLatLong();
+window.onload = () => {
+  getCityByLatLong();
+};
+// getCityByLatLong();
 // const iframe = document.getElementById('weatherMapFrame');
 
 // // Replace the placeholders with the actual lat and lon values
@@ -27,6 +27,7 @@ function getWeatherAndForecast() {
 
 
 function fetchWeather(city){
+  const xhr = new XMLHttpRequest();
 // console.log('Inside fetchweather : '+city);
   // Make an API call to retrieve weather data for the city
   // Replace the URL with your actual API endpoint
@@ -45,12 +46,12 @@ xhr.onload = () =>{
  if(xhr.status == 200){
 
   const data = JSON.parse(xhr.response);
-  var dataCoordss = [data.coord.lat,data.coord.lon];
+  // var dataCoordss = [data.coord.lat,data.coord.lon];
  
-  const lat = data.coord.lat;
-  const lon = data.coord.lon;
-  localStorage.setItem('lat', lat);
-  localStorage.setItem('lon', lon);
+  // const lat = data.coord.lat;
+  // const lon = data.coord.lon;
+  // localStorage.setItem('lat', lat);
+  // localStorage.setItem('lon', lon);
   // window.location.href = 'news.html';
 
 
@@ -165,7 +166,7 @@ function createForecastItem(date, icon, tempMax,tempMin) {
 function getCityByLatLong(){
   if ("geolocation" in navigator) {
     // Prompt user for permission to access their location
-    navigator.geolocation.getCurrentPosition(
+    navigator.geolocation.watchPosition(
       // Success callback function
       (position) => {
         // Get the user's latitude and longitude coordinates
