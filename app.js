@@ -1,16 +1,7 @@
-// window.onload = () => {
-//   getCityByLatLong();
-// };
-getCityByLatLong();
-// const iframe = document.getElementById('weatherMapFrame');
+window.onload = () => {
+  getCityByLatLong();
+};
 
-// // Replace the placeholders with the actual lat and lon values
-// const lat = 12.9762;
-// const lon = 77.6033;
-// const url = `https://openweathermap.org/weathermap?basemap=map&cities=true&layer=radar&lat=${lat}&lon=${lon}`;
-
-// // Set the iframe source with the updated URL
-// iframe.src = url;
 function search(event) {
   if(event.keyCode == 13) {
     getWeatherAndForecast();
@@ -24,20 +15,11 @@ function getWeatherAndForecast() {
   fetchForecast(city);
 }
 
-
-
-
 function fetchWeather(city){
-
 const xhr = new XMLHttpRequest();
-
-
-
 const url = 'https://'+location.hostname+':8090/weather/'+city;
-
-
 xhr.open('GET',url,true);
- xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); xhr.setRequestHeader('Access-Control-Allow-Origin', '*');  
+xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); xhr.setRequestHeader('Access-Control-Allow-Origin', '*');  
 xhr.send();
 
 xhr.onload = () =>{
@@ -47,7 +29,6 @@ xhr.onload = () =>{
  if(xhr.status == 200){
 
   const data = JSON.parse(xhr.response);
-
   var dataCoordss = [data.coord.lat,data.coord.lon];
  
   const lat = data.coord.lat;
@@ -121,7 +102,6 @@ data.list.forEach((element) =>  {
       alert("Please enter correct City");
       window.location.reload();
     }
-   
   }
 }
 
@@ -166,7 +146,7 @@ function createForecastItem(date, icon, tempMax,tempMin) {
 function getCityByLatLong(){
   if ("geolocation" in navigator) {
     // Prompt user for permission to access their location
-    navigator.geolocation.getCurrentPosition(
+    navigator.geolocation.watchPosition(
       // Success callback function
       (position) => {
         // Get the user's latitude and longitude coordinates
