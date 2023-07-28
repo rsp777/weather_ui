@@ -1,16 +1,7 @@
 window.onload = () => {
   getCityByLatLong();
 };
-// getCityByLatLong();
-// const iframe = document.getElementById('weatherMapFrame');
 
-// // Replace the placeholders with the actual lat and lon values
-// const lat = 12.9762;
-// const lon = 77.6033;
-// const url = `https://openweathermap.org/weathermap?basemap=map&cities=true&layer=radar&lat=${lat}&lon=${lon}`;
-
-// // Set the iframe source with the updated URL
-// iframe.src = url;
 function search(event) {
   if(event.keyCode == 13) {
     getWeatherAndForecast();
@@ -24,19 +15,11 @@ function getWeatherAndForecast() {
   fetchForecast(city);
 }
 
-
-
 function fetchWeather(city){
-  const xhr = new XMLHttpRequest();
-// console.log('Inside fetchweather : '+city);
-  // Make an API call to retrieve weather data for the city
-  // Replace the URL with your actual API endpoint
-//const url = 'https://192.168.1.7:8090/weather/'+city;
-const url = 'http://'+location.hostname+':8090/weather/'+city;
-// console.log(url);
-// console(xhr.getResponseHeader());
+const xhr = new XMLHttpRequest();
+const url = 'https://'+location.hostname+':8090/weather/'+city;
 xhr.open('GET',url,true);
- xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); xhr.setRequestHeader('Access-Control-Allow-Origin', '*');  
+xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); xhr.setRequestHeader('Access-Control-Allow-Origin', '*');  
 xhr.send();
 
 xhr.onload = () =>{
@@ -46,13 +29,14 @@ xhr.onload = () =>{
  if(xhr.status == 200){
 
   const data = JSON.parse(xhr.response);
-  // var dataCoordss = [data.coord.lat,data.coord.lon];
+  var dataCoordss = [data.coord.lat,data.coord.lon];
  
-  // const lat = data.coord.lat;
-  // const lon = data.coord.lon;
-  // localStorage.setItem('lat', lat);
-  // localStorage.setItem('lon', lon);
+  const lat = data.coord.lat;
+  const lon = data.coord.lon;
+  localStorage.setItem('lat', lat);
+  localStorage.setItem('lon', lon);
   // window.location.href = 'news.html';
+
 
 
 
@@ -85,14 +69,11 @@ xhr.onload = () =>{
 }
 
 function fetchForecast(city){
-  // var container = document.getElementById("forecast-container");
-  // container.innerHTML = "h";
-  const xhr = new XMLHttpRequest();
 
-  // console.log(city);
-  //const url = 'https://192.168.1.7:8083/forecast/'+city;
-const url = 'http://'+location.hostname+':8083/forecast/'+city;
-  // console.log(url);
+const xhr = new XMLHttpRequest();
+const url = 'https://'+location.hostname+':8083/forecast/'+city;
+
+
   xhr.open('GET',url,true);
   xhr.send();
 
@@ -121,7 +102,6 @@ data.list.forEach((element) =>  {
       alert("Please enter correct City");
       window.location.reload();
     }
-   
   }
 }
 
