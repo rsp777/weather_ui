@@ -66,18 +66,19 @@
 				<div class="fullwidth-block">
 					<div class="container">
 						<div class="row">
+							<form action="javascript:getLatLong()"  class="find-location">
+								<input id = "city-input" type="text" placeholder="Find your location...">
+								<input type="submit" value="Find">
+							</form>
 							<div class="content col-md-8">
-								
-								<div class="post" style="height:900px;width: 800px;margin-left:150px;">
-									<form action="javascript:getLatLong()"  class="find-location">
-										<input id = "city-input" type="text" placeholder="Find your location...">
-										<input type="submit" value="Find">
-									</form> 
+								 
+								<div class="post">
+									
 									<!-- <h2 class="entry-title">Nemo enim ipsam voluptatem quia voluptas</h2>
 									<div class="featured-image"><img src="images/featured-image-1.jpg" alt=""></div>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem nulla rem dolores unde et cum illum odio, enim quis odit eveniet quaerat non libero, consequatur voluptatem harum ad veritatis necessitatibus.</p> -->
-									<iframe  src="https://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=12.9660&lon=77.6064&zoom=5" id="iframeid" scrolling="no"
-											height="90%" width="100%" style="position:absolute; clip:rect(63px,1500px,1500px,0px); "></iframe>
+									<iframe  class="iframeid2" src="https://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=12.9660&lon=77.6064&zoom=5" id="iframeid" scrolling="no"
+											height="90%" width="95%" style="position:absolute; clip:rect(63px,1500px,1500px,0px); "></iframe>
 											<script>
 												const lat = localStorage.getItem('lat');
 												const lon = localStorage.getItem('lon');
