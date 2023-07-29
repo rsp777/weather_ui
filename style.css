@@ -1499,16 +1499,17 @@ form textarea {
 @media (min-width:992px) {
   .iframeid2 {
     width: 1100px;
-    height:880px;
+    height:650px;
     position: absolute;
-    top: -85px;
+    top: -90px;
     left:50px;
     right: 0;
     bottom: 0;
   }
 }
 .iframeid2{
-  top: -85px;
+  top: -90px;
+  /* height:0px; */
 }
 .post {
   padding: 50px 0;
