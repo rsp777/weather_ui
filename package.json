@@ -5,8 +5,8 @@
 	"open-cli": "7.2.0"
   },
  "scripts": {
-  "build": "npm run build",
-  "build:azure": "npm run docs:build"
+  "build": "webpack --mode production",
+  "build:azure": "webpack --mode production && cp -r dist/* ../api/wwwroot"
 }
   "name": "weather",
   "version": "1.0.0",
