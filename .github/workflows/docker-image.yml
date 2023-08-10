@@ -15,4 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag weatherui:$(date +%s)
+           docker tag v2.0.0 rspp777/weatherui
+           docker push rspp777/weatherui
