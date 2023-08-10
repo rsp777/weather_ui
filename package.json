@@ -4,9 +4,10 @@
     "http-server": "^14.1.1",
 	"open-cli": "7.2.0"
   },
-  "scripts": {
-    "start": "http-server & open-cli http://0.0.0.0:8080/weather.html"
-  },
+ "scripts": {
+  "build": "npm run build",
+  "build:azure": "npm run docs:build"
+}
   "name": "weather",
   "version": "1.0.0",
   "main": "app.js",
