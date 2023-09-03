@@ -89,6 +89,8 @@ h6 {
   font-size: 0.75em;
   margin: 2.33em 0; }
 
+ 
+
 abbr[title] {
   border-bottom: 1px dotted; }
 
@@ -179,7 +181,7 @@ button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  -webkit-appearance: button;
+  /* -webkit-appearance: button; */
   cursor: pointer; }
 
 button[disabled],
