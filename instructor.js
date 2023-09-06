@@ -3,7 +3,7 @@ window.onload = () => {
 };
 
 function getInstructor() {
-  const apiUrl = "http://192.168.1.4:9090/api/list";
+  const apiUrl = "https://192.168.1.5:9090/api/list";
   // Assuming the JSON data is stored in a file named 'data.json'
   // Replace 'API_URL' with the URL of your API
   fetch(apiUrl)
@@ -144,7 +144,7 @@ function addInstructor() {
       });
   
       console.log(values);
-      const url = "http://192.168.1.4:9090/api/add";
+      const url = "https://192.168.1.5:9090/api/add";
       const data = {
         instructor: {
           firstName: values[0],
