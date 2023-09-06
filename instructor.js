@@ -128,56 +128,63 @@ function createRow() {
   //     .then(response => console.log(response))
   //     .catch(error => console.error(error));
 }
-
+let isEventListenerAdded = false;
 function addInstructor() {
+
   let saveButton = document.querySelector("#save");
   console.log(saveButton);
-
-  saveButton.addEventListener("click", () => {
-    let inputs = document.querySelectorAll('#myTable input[type="text"]');
-    let values = [];
-
-    inputs.forEach((input) => {
-      values.push(input.value);
-    });
-
-    console.log(values);
-    const url = "http://192.168.1.4:9090/api/add";
-    const data = {
-      instructor: {
-        firstName: values[0],
-        lastName: values[1],
-        email: values[2],
-      },
-      youtubeChannel: values[3],
-      hobby: values[4],
-      courses: values[5],
-    };
-    console.log(data.instructor);
-    console.log(data.youtubeChannel);
-    console.log(data.hobby);
-    console.log(data.courses);
-    axios
-      .post(url, {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify(data),
-      })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`An error occurred: ${response.statusText}`);
-        }
-        window.location.reload();
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Data : " + data);
-      })
-      .catch((error) => {
-        // Handle the error
-        console.error(error);
+  console.log('isEventListenerAdded : '+isEventListenerAdded);
+  if (!isEventListenerAdded) {
+    saveButton.addEventListener("click", () => {
+      let inputs = document.querySelectorAll('#myTable input[type="text"]');
+      let values = [];
+  
+      inputs.forEach((input) => {
+        values.push(input.value);
       });
-  });
+  
+      console.log(values);
+      const url = "http://192.168.1.4:9090/api/add";
+      const data = {
+        instructor: {
+          firstName: values[0],
+          lastName: values[1],
+          email: values[2],
+        },
+        youtubeChannel: values[3],
+        hobby: values[4],
+        courses: values[5],
+      };
+      console.log(data.instructor);
+      console.log(data.youtubeChannel);
+      console.log(data.hobby);
+      console.log(data.courses);
+      axios
+        .post(url, {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify(data),
+        })
+        // .then((response) => {
+        //   console.log('Response : '+response.ok);
+        //   if (!response.ok) {
+        //     throw new Error(`An error occurred: ${response.statusText}`);
+        //   }
+        //   window.location.reload();
+        //   return response.json();
+        // })
+        .then((data) => {
+          console.log("Data : " + data);
+        })
+        .catch((error) => {
+          // Handle the error
+          console.error(error);
+        });
+    });
+    console.log('Hey : ');
+    isEventListenerAdded = true;
+    console.log('isEventListenerAdded : '+isEventListenerAdded);
+  }
 }
