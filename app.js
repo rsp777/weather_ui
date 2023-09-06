@@ -43,7 +43,7 @@ xhr.onload = () =>{
   document.getElementById("day").innerHTML  = getWeekDay(data.dt);
     document.getElementById("date").innerHTML = getCurrentDate(data.dt);
     document.getElementById("city").innerHTML = data.name;
-    document.getElementById("temp").innerHTML = `${data.main.temp}<sup>o</sup>C<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" />`;
+    document.getElementById("temp").innerHTML = `${data.main.temp}<sup>o</sup>C<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" />`;
     
     if(data.rain && data.rain["1h"]){
       document.getElementById("1h").innerHTML =`${data.rain["1h"]} <img src="images/icon-umberella.png">`;
@@ -71,7 +71,7 @@ xhr.onload = () =>{
 function fetchForecast(city){
 
 const xhr = new XMLHttpRequest();
-const url = 'https://'+location.hostname+':8083/forecast/'+city;
+const url = 'http://'+location.hostname+':8083/forecast/'+city;
 
 
   xhr.open('GET',url,true);
@@ -123,7 +123,7 @@ function createForecastItem(date, icon, tempMax,tempMin) {
   const forecastIcon = document.createElement("div");
   forecastIcon.classList.add("forecast-icon");
   const iconImg = document.createElement("img");
-  iconImg.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+  iconImg.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
   iconImg.alt = "";
   forecastIcon.appendChild(iconImg);
   forecastContent.appendChild(forecastIcon);
@@ -155,7 +155,7 @@ function getCityByLatLong(){
   
         // Do something with the location data, e.g. display on a map
         // console.log(`Latitude: ${lat}, longitude: ${lng}`);
-        const apiUrl = 'https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lng+'&format=json';
+        const apiUrl = 'http://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lng+'&format=json';
       
       axios.get(apiUrl)
         .then(response => {
